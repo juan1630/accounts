@@ -80,3 +80,19 @@ SELECT * FROM USERS;
 	Listamos todas las tablas de la DB
 */
 SELECT * FROM sys.tables;
+
+
+
+/*
+	Union de las dos tablas de operaciones y de los usuarios.
+*/
+
+SELECT * FROM OPERACIONES INNER JOIN USERS ON  OPERACIONES.userId = USERS.ID  WHERE userId = 1  ORDER BY fechaDeOperacion;
+
+-- sentences using alias 
+SELECT * FROM OPERACIONES AS OP INNER JOIN USERS AS U ON  OP.userId = U.ID  WHERE userId = 1  ORDER BY fechaDeOperacion;
+
+-- Sentneces using join for 3 tables 
+
+SELECT * FROM OPERACIONES INNER JOIN USERS ON  OPERACIONES.userId = USERS.ID INNER JOIN KindOfMoves ON KindOfMoves.IDKindOfMove = OPERACIONES.kindOfMove  
+WHERE userId = 1  ORDER BY fechaDeOperacion;

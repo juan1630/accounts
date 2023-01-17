@@ -92,6 +92,7 @@ INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, 
 INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	9,'05/01/2023', '01', 250, 1,4 );
 INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	10,'02/01/2023', '01', 3500, 1,5 );
 INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	11,'03/01/2023', '01', 150, 1,2 );
+INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	13,'02/01/2023', '01', 520, 3,3 );
 
 SELECT * FROM OPERACIONES;
 
@@ -102,3 +103,10 @@ SELECT * FROM OPERACIONES;
 */
 
 SELECT * FROM OPERACIONES INNER JOIN USERS ON OPERACIONES.userId = USERS.ID  INNER JOIN KindOfMoves ON OPERACIONES.kindOfMove = KindOfMoves.IDKindOfMove;
+
+/*
+
+	Obtenemos todas las operaciones del un usuario en especifico, de forma ascendente
+*/
+
+SELECT * FROM OPERACIONES WHERE userId = 1 ORDER BY fechaDeOperacion;
