@@ -17,8 +17,9 @@ const app = express();
 app.post('/auth/create/user',async (req , resp ) => {
 
 
+    console.log(  req.body);
     const {  name, age , prosession, password, email, theme  } = req.body;
-   const passwordEncrypt = bycryptjs.hashSync( password );
+    const passwordEncrypt = bycryptjs.hashSync( password );
 
     try {
         const [rows] = await connect.execute(`INSERT INTO USERS(name, age, prosession, password, email, theme) VALUES( '${name }', ${ age }, '${prosession}', '${ passwordEncrypt }', '${email}', '${theme}' );`); 
