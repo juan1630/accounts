@@ -5,3 +5,7 @@
 
 - We use this command to show all the tables inside database.
    - SELECT * FROM sys.tables;
+
+## Tha main topics on this project are:
+   - Set up typescirp with nodejs and clasess
+   - Singleton pattern with nodejs

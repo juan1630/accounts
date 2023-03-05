@@ -81,18 +81,18 @@ CREATE TABLE OPERACIONES(
 
 
 
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	1,'15/01/2023', '01', 250, 1,1 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	2,'09/01/2023', '01', 20, 1,2 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	3,'02/01/2023', '01', 50, 1,3 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	4,'02/01/2023', '02', 500, 1,1 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	5,'01/01/2023', '03', 2250, 1,1 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	6,'15/01/2023', '03', 50, 1,2 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	7,'02/01/2023', '01', 20, 1,2 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	8,'05/01/2023', '01', 10, 1,1 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	9,'05/01/2023', '01', 250, 1,4 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	10,'02/01/2023', '01', 3500, 1,5 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	11,'03/01/2023', '01', 150, 1,2 );
-INSERT INTO OPERACIONES (	idOperacion, fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	13,'02/01/2023', '01', 520, 3,3 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'15/01/2023', '01', 250, 1,1 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'09/01/2023', '01', 20, 1,2 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'02/01/2023', '01', 50, 1,3 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'02/01/2023', '02', 500, 1,1 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'01/01/2023', '03', 2250, 1,1 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'15/01/2023', '03', 50, 1,2 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'02/01/2023', '01', 20, 1,2 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'05/01/2023', '01', 10, 1,1 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'05/01/2023', '01', 250, 1,4 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'02/01/2023', '01', 3500, 1,5 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'03/01/2023', '01', 150, 1,2 );
+INSERT INTO OPERACIONES ( fechaDeOperacion, monthOperacion, total, kindOfMove, userId) VALUES (	'02/01/2023', '01', 520, 3,3 );
 
 SELECT * FROM OPERACIONES;
 
