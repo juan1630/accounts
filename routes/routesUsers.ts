@@ -17,7 +17,7 @@ const app = express();
 app.post('/auth/create/user',async (req , resp ) => {
 
 
-    console.log(  req.body);
+    console.log(  req.body, "/auth/create/user");
     const {  name, age , prosession, password, email, theme  } = req.body;
     const passwordEncrypt = bycryptjs.hashSync( password );
 
@@ -33,7 +33,7 @@ app.post('/auth/create/user',async (req , resp ) => {
         return resp.status(201).json({
             ok: true,
             message: 'User created',
-            resp: rows1
+            resp: rows1[0]
         });
     }
     }catch(error) {
