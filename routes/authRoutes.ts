@@ -1,6 +1,8 @@
 import express  from "express";
 import mysql from 'mysql2/promise' 
-// import { connectDB } from '../server/index'
+import bycryptjs from 'bcryptjs';
+import { typesEnv } from "../environment";
+import jwt from 'jsonwebtoken';
 
 const app = express();
 
@@ -30,13 +32,51 @@ app.get('/users', async  (req, resp) => {
 
 
 
-app.get('/auth', (req, resp)=>{
-    console.log('Hola desde el get');
+app.post('/auth', async(req, resp)=>{
 
-    return resp.status(200).json({
-        ok: true,
-        message: 'Hola desde el get'
-    })
+    console.log( req.body );
+    const { password } = req.body;
+
+
+    try {
+
+        const [ rows ] = await pool.execute('SELECT * FROM USERS WHERE email = "'+ req.body.email +'"' );
+    
+        if(rows.length != 0 ) {
+            const passwordHashed = await bycryptjs.compare( password, rows[0].password )
+    
+            if( passwordHashed  ){
+        
+                const jwtSing = jwt.sign({
+                    _id: rows[0].ID,
+                    name: rows[0].name,
+                    email: rows[0].email
+                }, typesEnv.token_dev || '', { expiresIn:'8h' });   
+        
+        
+                return resp.status(200).json({
+                    ok: true,
+                    message: 'Authenticated',
+                    token: jwtSing
+                })
+                
+            }
+        }
+    
+        return resp.status(400).json({
+            ok:false,
+            message: 'No se encontró el usuario'
+        })
+
+    }catch (error) {
+        console.log(error);
+        return resp.status(500).json({
+            ok: false,
+            message: 'Hubo un error',
+            error
+        })
+    }
+
 })
 
 

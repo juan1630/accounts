@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 import express from 'express';
+import { typesEnv } from '../environment';
 // import mysql from 'mysql2/promise';
 
 
@@ -21,7 +22,7 @@ export default  class Server {
             next();
         });
         this.app.use(require('../routes/index'));
-        this.app.listen(3001, ()=> console.log('Server is running on port 3000'));
+        this.app.listen( typesEnv.port, ()=> console.log(`Server is running on port ${typesEnv.port}`));
     }
 }
 

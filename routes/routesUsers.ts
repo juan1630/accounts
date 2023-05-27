@@ -1,6 +1,9 @@
-import express, { request, response } from 'express';
+import express from 'express';
 import mysql from 'mysql2/promise';
 import bycryptjs from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { typesEnv } from '../environment';
+
 let connect:any;
 
 mysql.createConnection({
@@ -19,25 +22,35 @@ app.post('/auth/create/user',async (req , resp ) => {
 
     console.log(  req.body, "/auth/create/user");
     const {  name, age , prosession, password, email, theme  } = req.body;
-    const passwordEncrypt = bycryptjs.hashSync( password );
+    const saltGenereted = await bycryptjs.genSalt(10);
+    const passwordEncrypt = bycryptjs.hashSync( password, saltGenereted );
 
     try {
         const [rows] = await connect.execute(`INSERT INTO USERS(name, age, prosession, password, email, theme) VALUES( '${name }', ${ age }, '${prosession}', '${ passwordEncrypt }', '${email}', '${theme}' );`); 
-    // INSERT INTO USERS( name, age, prosession, password, email, theme ) VALUES ( 'JUAN', 27, 'SOFTWARE ENGENEER', '123456' ,'JOSEJUANPATRON1630@GMAIL.COM', 'WHITE'  );
     
     if(  rows.affectedRows == 1 ) {
 
-        const [ rows1 ] = await connect.execute(`SELECT  name, prosession, age, email, theme   FROM USERS WHERE id =  ${rows.insertId} `)
+        const [ rows1 ] = await connect.execute(`SELECT  name, prosession, age, email, theme   FROM USERS WHERE id =  ${rows.insertId} `);
 
+        const  tokenGenereted = jwt.sign({
+            _id: rows1[0].ID,
+            email: rows1[0].email,
+            name: rows1[0].name
+        }, typesEnv.token_dev || '', { expiresIn: '8h' })
           
         return resp.status(201).json({
             ok: true,
-            message: 'User created',
-            resp: rows1[0]
+            message: 'User was created',
+            resp: rows1[0],
+            token: tokenGenereted
         });
     }
     }catch(error) {
         console.log(error);
+        return resp.status(500).json({
+            ok: false,
+            message: 'Hubo un error'
+        })
     }
 
 
