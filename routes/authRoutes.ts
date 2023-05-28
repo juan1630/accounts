@@ -34,14 +34,14 @@ app.get('/users', async  (req, resp) => {
 
 app.post('/auth', async(req, resp)=>{
 
-    console.log( req.body );
+    console.log( req.body, '/auth' );
     const { password } = req.body;
 
 
     try {
 
-        const [ rows ] = await pool.execute('SELECT * FROM USERS WHERE email = "'+ req.body.email +'"' );
-    
+        const [ rows ] = await pool.execute('SELECT * FROM USERS WHERE email = "'+ req.body.email +'"'  + "LIMIT 1");
+        console.log( rows );
         if(rows.length != 0 ) {
             const passwordHashed = await bycryptjs.compare( password, rows[0].password )
     
