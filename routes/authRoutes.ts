@@ -65,7 +65,7 @@ app.post('/auth', async(req, resp)=>{
     
         return resp.status(400).json({
             ok:false,
-            message: 'No se encontró el usuario'
+            message: 'Usuario o contraseña incorrectos'
         })
 
     }catch (error) {
